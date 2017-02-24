@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ninjagold2thegoldening</title>
+    <style>
+    .total{
+      width: 800px;
+      height: 50px;
+    }
+    .box{
+      height: 150px;
+      width: 150px;
+      border: 1px solid black;
+      padding: 5px;
+      display: inline-block;
+      text-align: center;
+    }
+    .footer{
+      width: 660px;
+      height: 140px;
+      border: 1px solid black;
+      overflow-y: scroll;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="total">
+      {% csrf_token %}
+      <h3>Total Gold: {{request.session.gold}}</h3>
+    </div>
+    <div class="box">
+      <h2>Farm</h2>
+      <h5>Earn 10-15 gold</h5>
+      <form action="/process" method="post">
+        {% csrf_token %}
+         <input type="hidden" name="building" value="farm" />
+         <input type="submit" value="Find Gold!"/>
+       </form>
+     </div>
+     <div class="box">
+       <h2>Cave</h2>
+       <h5>Earn 5-20 gold</h5>
+       <form action="/process" method="post">
+         {% csrf_token %}
+          <input type="hidden" name="building" value="cave" />
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </div>
+      <div class="box">
+        <h2>Town</h2>
+        <h5>Earn 0-25 gold</h5>
+        <form action="/process" method="post">
+          {% csrf_token %}
+           <input type="hidden" name="building" value="town" />
+           <input type="submit" value="Find Gold!"/>
+         </form>
+       </div>
+       <div class="box">
+         <h2>Casino</h2>
+         <h5>Earn/lose up to 50 gold</h5>
+         <form action="/process" method="post">
+           {% csrf_token %}
+            <input type="hidden" name="building" value="casino" />
+            <input type="submit" value="Find Gold!"/>
+          </form>
+        </div>
+      </p>Activities<p>
+        <div class="footer">
+
+          <p>{{request.session.log | linebreaks}}</p>
+
+
+    </div>
+  </body>
+</html>
